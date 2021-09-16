@@ -1,22 +1,24 @@
 <script lang="ts">
   import Stream from "./Stream.svelte";
   import Footer from "./Footer.svelte";
-  export let sputnik_stream_src: string;
+  import StreamDef from "./StreamDef.ts";
   export let lab_rescue_link: string;
-  let sputnik_stream_desc = "This Sputnik is the central Rat HQ. Located in the right-upper-front corner of the cage it can fit the whole crew!";
+  export let streams: Array<StreamDef>;
 </script>
 
 <main>
   <h1 id="title">pisk</h1>
-  <Stream src={sputnik_stream_src} desc={sputnik_stream_desc}/>
+    <div id="streams">
+      {#each streams as stream}
+	<Stream src={stream.src} desc={stream.description}/>
+      {/each}
+    </div>
 </main>
 <Footer {lab_rescue_link}/>
 
 <style>
   main {
     text-align: center;
-    padding: 1em;
-    max-width: 240px;
     margin: 0 auto;
   }
 
@@ -28,6 +30,11 @@
   #title {
     font-size: 4em;
     letter-spacing: 30pt;
+  }
+
+  #streams {
+    justify-content: center;
+    display: flex;
   }
 
   h1 {

@@ -1,10 +1,24 @@
-import App from './App.svelte';
+import App from "./App.svelte";
+import StreamDef from "./StreamDef.ts";
 
 const app = new App({
 	target: document.body,
 	props: {
-	  sputnik_stream_src: 'https://pisk.miau.how/stream_0',
-	  lab_rescue_link: 'https://zrzutka.pl/8a62g7'
+	  streams: [
+	    {
+	      src: "https://pisk.miau.how/stream_0",
+	      description: "This Sputnik is the central Rat HQ. Located in the right-upper-front corner of the cage it can fit the whole crew!";
+	    },
+	    {
+	      src: "https://pisk.miau.how/stream_1",
+	      description: "The ferret tunnel - Pliszka and Gąska's favorite",
+	    },
+	    {
+	      src: "https://pisk.miau.how/stream_2",
+	      description: "The bottom. Sarna (albino thicc queen) loves the wooden house on the left.",
+	    }
+	  ],
+	  lab_rescue_link: "https://zrzutka.pl/8a62g7"
 	}
 });
 

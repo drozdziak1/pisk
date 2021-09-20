@@ -14,7 +14,14 @@
         in
           rec {
             devShell = pkgs.mkShell {
-              nativeBuildInputs = with pkgs; [yarn2nix yarn nodejs-16_x];
+              nativeBuildInputs = with pkgs; [ yarn2nix yarn nodejs-16_x ];
+            };
+            packages = rec {
+              frontend = pkgs.callPackage  ./frontend {};
+              defaultPackage."${system}" = frontend;
+            };
+            overlay = final: prev: {
+              pisk-frontend = prev.callPackage ./frontend {};
             };
           }
     );

@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "Pisk Ratvision";
 
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs/release-21.05;
